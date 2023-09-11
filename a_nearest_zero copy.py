@@ -1,10 +1,7 @@
-
-
-# Ввод данных
+# ID посылки 90157271
 def input_data():
-    file_in = 'input.txt'
-    with open(file_in, 'r') as f:
-        count = int(f.readline().strip())
+    with open('input.txt', 'r') as f:
+        count = int(f.readline())
         data = list(map(int, f.readline().split()))
     return count, data
 
@@ -17,6 +14,7 @@ def search_null(first):
     return count*2
 
 
+# Основной блок
 if __name__ == '__main__':
     count, data = input_data()
     output = [0] * count
