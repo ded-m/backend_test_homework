@@ -1,11 +1,8 @@
-# ID посылки 90399123
+# ID посылки 90579424
 
 def input_data():
-    data: list[str] = []
-    with open('input.txt', 'r') as f:
-        k = int(f.readline())
-        for _ in range(4):
-            data.extend(max('0', _) for _ in list(f.readline()))
+    k = int(input())
+    data = input()+input()+input()+input()
     return k, data
 
 

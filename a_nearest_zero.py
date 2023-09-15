@@ -1,36 +1,24 @@
-# ID посылки 90157271
+# ID посылки 90637311
+
 def input_data():
-    with open('input.txt', 'r') as f:
-        count = int(f.readline())
-        data = list(int(_) for _ in f.readline().split())
+    count = int(input())
+    data = list(int(_) for _ in input().split())
     return count, data
 
 
-def search_empty(first, datal):
-    """ Поиск пустого участка """
-    for index, value in enumerate(datal, start=first+1):
-        if value == 0:
-            return index-1
-    return len(datal)*2
-
-
 def distance_calculation(count, data):
-    """ расчёт дистанции до ближайших пустых участков """
     output = [0] * count
-    """ Расчёт первого участка """
-    item = 0
-    empty = search_empty(item, data)
-    output[item] = empty - item
-    """ Расчёт остальных участков """
-    item += 1
-    while item < count:
-        empty = search_empty(item, data[item:])+item
-        while item <= min(count - 1, empty):
-            previous = output[item - 1]
-            output[item] = min(empty - item, previous+1)
-            item += 1
-            if item < count and data[item] == 0:
-                empty = item
+    empty = -1
+    for index, value in enumerate(data):
+        if value == 0:
+            if empty >= 0:
+                median = int((index-empty)//2)
+                output[index-median:index] = output[empty+median:empty:-1]
+            elif index > 0:
+                output[:index] = output[index-1::-1]
+            empty = index
+        else:
+            output[index] = index - empty
     return output
 
 
