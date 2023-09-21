@@ -5,9 +5,13 @@ class StackMax:
 
     def push(self, item):
         self.items.append(item)
+        if self.max == [] or item >= self.max[-1]:
+            self.max.append(item)
 
     def pop(self):
         if self.items != []:
+            if self.max[-1] == self.items[-1]:
+                self.max.pop()
             return self.items.pop()
         else:
             return 'error'
@@ -15,9 +19,7 @@ class StackMax:
     def get_max(self):
         max_value = None
         if self.items != []:
-            max_value = self.items[0]
-            for item in self.items:
-                max_value = max(item, max_value)
+            max_value = self.max[-1]
         return max_value
 
 
