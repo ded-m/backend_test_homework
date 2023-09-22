@@ -4,19 +4,18 @@ class MyQueueSized():
         self.max_n = max_size
         self.head = 0
         self.tail = 0
-        self.size1 = 0
+        self.length = 0
 
     def is_empty(self):
-        return self.size1 == 0
+        return self.length == 0
 
     def push(self, x):
-        if self.size1 != self.max_n:
+        if self.length != self.max_n:
             self.queue[self.tail] = x
         else:
             return 'error'
         self.tail = (self.tail + 1) % self.max_n
-        self.size1 += 1
-        pass
+        self.length += 1
 
     def pop(self):
         if self.is_empty():
@@ -24,7 +23,7 @@ class MyQueueSized():
         x = self.queue[self.head]
         self.queue[self.head] = None
         self.head = (self.head + 1) % self.max_n
-        self.size1 -= 1
+        self.length -= 1
         return x
 
     def peek(self):
@@ -33,7 +32,7 @@ class MyQueueSized():
         return self.queue[self.head]
 
     def size(self):
-        return self.size1
+        return self.length
 
 
 def input_data():
