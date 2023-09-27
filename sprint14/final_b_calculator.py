@@ -1,31 +1,20 @@
-#  ID посылки 91409944
+#  ID посылки 91497957
+OPERATIONS = {'+': lambda x, y: x+y,
+              '-': lambda x, y: x-y,
+              '*': lambda x, y: x*y,
+              '/': lambda x, y: x//y,
+              }
+
 
 class Stack:
     def __init__(self):
-        self.stack = []
+        self.__stack = []
 
     def add(self, x):
-        self.stack.append(int(x))
+        self.__stack.append(int(x))
 
-    def shift(self, res):
-        self.stack[-2] = res
-        self.stack.pop()
-
-    def addition(self):
-        res = self.stack[-2] + self.stack[-1]
-        self.shift(res)
-
-    def subtraction(self):
-        res = self.stack[-2] - self.stack[-1]
-        self.shift(res)
-
-    def multiplication(self):
-        res = self.stack[-2] * self.stack[-1]
-        self.shift(res)
-
-    def division(self):
-        res = self.stack[-2] // self.stack[-1]
-        self.shift(res)
+    def pop(self):
+        return self.__stack.pop()
 
 
 def input_data():
@@ -34,19 +23,15 @@ def input_data():
 
 def calculation(data):
     stack = Stack()
+
     for item in data:
         if item.isdigit() or item[1:].isdigit():
             stack.add(item)
         else:
-            if item == '+':
-                stack.addition()
-            if item == '-':
-                stack.subtraction()
-            if item == '*':
-                stack.multiplication()
-            if item == '/':
-                stack.division()
-    return stack.stack[-1]
+            y = stack.pop()
+            x = stack.pop()
+            stack.add(OPERATIONS[item](x, y))
+    return stack.pop()
 
 
 if __name__ == '__main__':

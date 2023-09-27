@@ -48,10 +48,16 @@ class Deque:
 
 def input_data():
     commands = []
-    count = int(input())
-    deque_max = int(input())
-    for _ in range(count):
-        commands.append(input().strip().split())
+    # count = int(input())
+    # deque_max = int(input())
+    # for _ in range(count):
+    #     commands.append(input().strip().split())
+    file_in = 'sprint14/input.txt'
+    with open(file_in, 'r') as f:
+        count = int(f.readline())
+        deque_max = int(f.readline())
+        for _ in range(count):
+            commands.append(f.readline().strip().split())
     return deque_max, commands
 
 
