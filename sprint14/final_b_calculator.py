@@ -1,8 +1,8 @@
 #  ID посылки 91497957
-OPERATIONS = {'+': lambda x, y: x+y,
-              '-': lambda x, y: x-y,
-              '*': lambda x, y: x*y,
-              '/': lambda x, y: x//y,
+OPERATIONS = {'+': lambda x, y: x + y,
+              '-': lambda x, y: x - y,
+              '*': lambda x, y: x * y,
+              '/': lambda x, y: x // y,
               }
 
 

@@ -1,9 +1,3 @@
-7
-10
-push_front -855
-push_front 0
-pop_back
-pop_back
-push_back 844
-pop_back
-push_back 823
+6
+1 2 4 4 6 8
+3
