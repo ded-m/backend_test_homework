@@ -1,3 +1,5 @@
+#  ID посылки 93480798
+
 def partition(array, middle, left, right):
     while left <= right:
         while array[left] < middle:
@@ -25,7 +27,7 @@ def input_data():
     file_in = 'input.txt'
     with open(file_in, 'r') as f:
         n = int(f.readline().strip())
-        entry = list(map(lambda item: [int(item[1]), -int(item[2]), item[0]],
+        entry = list(map(lambda item: [-int(item[1]), int(item[2]), item[0]],
                          (f.readline().strip().split() for i in range(n))))
     return entry
 
@@ -33,4 +35,4 @@ def input_data():
 if __name__ == '__main__':
     entry = input_data()
     quicksort(entry, 0, len(entry)-1)
-    print(entry)
+    [print(member[2]) for member in entry]
