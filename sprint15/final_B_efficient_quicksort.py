@@ -1,10 +1,8 @@
-def partition(array, pivot, left1, right1):
-    left = [int(array[left1][1]), int(array[left1][2]), array[left1][0]]
-    right = [int(array[right1][1]), int(array[right1][2]), array[right1][0]]
+def partition(array, middle, left, right):
     while left <= right:
-        while array[left] < pivot:
+        while array[left] < middle:
             left += 1
-        while pivot < array[right]:
+        while middle < array[right]:
             right -= 1
         if left <= right:
             array[left], array[right] = array[right], array[left]
@@ -12,23 +10,25 @@ def partition(array, pivot, left1, right1):
             right -= 1
     return left, right
 
-def quicksort(array, start, end):
-    if len(array) < 2:  # базовый случай,
-        return       # массивы с 0 или 1 элементами фактически отсортированы
-    else:  # рекурсивный случай
-        pivot = int(len(array)/2)
-        # pivot = array[random.randint(start, end)]
 
-        left, right = partition(array, pivot, start, end)
+def quicksort(array, start, end):
+    if end <= start:  # базовый случай,
+        return
+    else:  # рекурсивный случай
+        middle = array[(start+end)//2]
+        left, right = partition(array, middle, start, end)
         quicksort(array, start, right)
         quicksort(array, left, end)
+
 
 def input_data():
     file_in = 'input.txt'
     with open(file_in, 'r') as f:
         n = int(f.readline().strip())
-        entry = [f.readline().strip().split() for i in range(n)]
+        entry = list(map(lambda item: [int(item[1]), -int(item[2]), item[0]],
+                         (f.readline().strip().split() for i in range(n))))
     return entry
+
 
 if __name__ == '__main__':
     entry = input_data()
