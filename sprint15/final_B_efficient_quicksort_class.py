@@ -1,4 +1,5 @@
-#  ID посылки 93480798
+#  ID посылки 93490596
+
 class member():
     def __init__(self, name, amount, penalty):
         self.name = name
