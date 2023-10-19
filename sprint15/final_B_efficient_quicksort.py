@@ -17,7 +17,7 @@ def quicksort(array, start, end):
     if end <= start:  # базовый случай,
         return
     else:  # рекурсивный случай
-        middle = array[(start+end)//2]
+        middle = array[(start + end) // 2]
         left, right = partition(array, middle, start, end)
         quicksort(array, start, right)
         quicksort(array, left, end)
@@ -34,5 +34,5 @@ def input_data():
 
 if __name__ == '__main__':
     entry = input_data()
-    quicksort(entry, 0, len(entry)-1)
+    quicksort(entry, 0, len(entry) - 1)
     [print(member[2]) for member in entry]

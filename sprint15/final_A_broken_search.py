@@ -1,4 +1,4 @@
-#  ID посылки 92472381
+#  ID посылки 93543792
 
 def broken_search(nums, target) -> int:
     left = 0
@@ -19,17 +19,3 @@ def broken_search(nums, target) -> int:
             else:
                 right = mid + 1
     return -1
-
-
-def test():
-    arr = [19, 21, 100, 101, 1, 4, 5, 7, 12]
-    assert broken_search(arr, 5) == 6
-
-    arr = [5, 1]
-    assert broken_search(arr, 1) == 1
-
-    arr = [3, 5, 6, 7, 9, 1, 2]
-    assert broken_search(arr, 4) == -1
-
-
-test()
